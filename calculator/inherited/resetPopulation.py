@@ -86,7 +86,7 @@ def inherited(oldPop, mf, mp):
         for i in range(mul.__len__()):
             if newPopulation.__len__() < 10 and mul[i] == max:
                 newPopulation.append(oldPop[i])
-    # 从下一代种群中选出剩余所需的np/2的个体加新种群
+    # 从下一代种群中选出剩余所需的个体加新种群
     while newPopulation.__len__() < np:
         max = numpy.max(mul3)
         for i in range(mul3.__len__()):
