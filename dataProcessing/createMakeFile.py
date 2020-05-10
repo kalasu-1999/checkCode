@@ -26,4 +26,5 @@ def createMakeFile(cPosition):
     MakeFile.write("\trm -rf *.o\n")
     MakeFile.write("\trm -rf $(target)\n")
     MakeFile.write("\trm -rf  *.gcov *.gcda *.gcno\n")
+    MakeFile.close()
     os.system('sh dataProcessing/startMake.sh ' + positionStr)
