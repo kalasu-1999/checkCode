@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 from dataProcessing import createMakeFile
 from dataProcessing import createRunall
+from dataProcessing import findLines
 from dataProcessing import getData
 from dataProcessing import matome
 from calculator import tarantula
@@ -46,6 +47,7 @@ def calculator(cDirPosition, tempList):
 def checkMain(cPosition, cDirPosition, testDirPosition, answerDirPosition, tempList):
     createMakeFile.createMakeFile(cPosition)
     createRunall.createRunall(cPosition, testDirPosition)
+    findLines.findLines(cPosition, cDirPosition)
     getData.getDataMain(cDirPosition, answerDirPosition)
     calculator(cDirPosition, tempList)
     print('finish')
@@ -56,4 +58,4 @@ if __name__ == '__main__':
               '/home/kalasu/PycharmProjects/tot_info',
               '/home/kalasu/PycharmProjects/tot_info/test',
               '/home/kalasu/PycharmProjects/tot_info/answer',
-              [1, 2, 3, 4, 5, 7])
+              [1, 2, 3, 4, 5, 6, 7])

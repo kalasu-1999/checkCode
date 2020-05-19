@@ -50,6 +50,7 @@ def openGcov(dirPosition, times):
 def setGcov(dirPosition, numbers):
     gcov1 = []
     gcov2 = []
+    findLines = numpy.load(dirPosition + "/numpyDataDir/findLines.npy")
     for item in range(1, numbers + 1):
         list1 = []
         list2 = []
@@ -60,7 +61,7 @@ def setGcov(dirPosition, numbers):
             temp2 = int(re.compile(' ').sub("", it[1]))
             if temp2 == 0:
                 continue
-            else:
+            elif temp2 - 1 in findLines:
                 if temp1 == "#####" or temp1 == "-":
                     list1.append(0)
                     list2.append(0)

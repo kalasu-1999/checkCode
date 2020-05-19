@@ -4,6 +4,7 @@ import xlwt
 
 
 def matome(dirPosition, tempList):
+    findLines = numpy.load(dirPosition+"/numpyDataDir/findLines.npy")
     if len(tempList) != 0:
         book = xlwt.Workbook(encoding='UTF-8')
         for item in tempList:
@@ -13,13 +14,13 @@ def matome(dirPosition, tempList):
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
-                        str1 = str(answerList[i][0] + 1)
+                        str1 = str(findLines[answerList[i][0]] + 1)
                     else:
                         for j in range(0, len(answerList[i])):
                             if j != len(answerList[i]) - 1:
-                                str1 = str1 + str(answerList[i][j] + 1) + ","
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1) + ","
                             else:
-                                str1 = str1 + str(answerList[i][j] + 1)
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1)
                     sheet1.write(i, 0, str1)
             if item == '2':
                 sheet1 = book.add_sheet('Ochiai')
@@ -27,13 +28,13 @@ def matome(dirPosition, tempList):
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
-                        str1 = str(answerList[i][0] + 1)
+                        str1 = str(findLines[answerList[i][0]] + 1)
                     else:
                         for j in range(0, len(answerList[i])):
                             if j != len(answerList[i]) - 1:
-                                str1 = str1 + str(answerList[i][j] + 1) + ","
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1) + ","
                             else:
-                                str1 = str1 + str(answerList[i][j] + 1)
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1)
                     sheet1.write(i, 0, str1)
             if item == '3':
                 sheet1 = book.add_sheet('Jaccard')
@@ -41,13 +42,13 @@ def matome(dirPosition, tempList):
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
-                        str1 = str(answerList[i][0] + 1)
+                        str1 = str(findLines[answerList[i][0]] + 1)
                     else:
                         for j in range(0, len(answerList[i])):
                             if j != len(answerList[i]) - 1:
-                                str1 = str1 + str(answerList[i][j] + 1) + ","
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1) + ","
                             else:
-                                str1 = str1 + str(answerList[i][j] + 1)
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1)
                     sheet1.write(i, 0, str1)
             if item == '4':
                 sheet1 = book.add_sheet('次数矩阵')
@@ -55,13 +56,13 @@ def matome(dirPosition, tempList):
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
-                        str1 = str(answerList[i][0] + 1)
+                        str1 = str(findLines[answerList[i][0]] + 1)
                     else:
                         for j in range(0, len(answerList[i])):
                             if j != len(answerList[i]) - 1:
-                                str1 = str1 + str(answerList[i][j] + 1) + ","
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1) + ","
                             else:
-                                str1 = str1 + str(answerList[i][j] + 1)
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1)
                     sheet1.write(i, 0, str1)
             if item == '5':
                 sheet1 = book.add_sheet('神经网络（0,1矩阵）')
@@ -69,13 +70,13 @@ def matome(dirPosition, tempList):
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
-                        str1 = str(answerList[i][0] + 1)
+                        str1 = str(findLines[answerList[i][0]] + 1)
                     else:
                         for j in range(0, len(answerList[i])):
                             if j != len(answerList[i]) - 1:
-                                str1 = str1 + str(answerList[i][j] + 1) + ","
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1) + ","
                             else:
-                                str1 = str1 + str(answerList[i][j] + 1)
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1)
                     sheet1.write(i, 0, str1)
             if item == '6':
                 sheet1 = book.add_sheet('神经网络（次数矩阵）')
@@ -83,13 +84,13 @@ def matome(dirPosition, tempList):
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
-                        str1 = str(answerList[i][0] + 1)
+                        str1 = str(findLines[answerList[i][0]] + 1)
                     else:
                         for j in range(0, len(answerList[i])):
                             if j != len(answerList[i]) - 1:
-                                str1 = str1 + str(answerList[i][j] + 1) + ","
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1) + ","
                             else:
-                                str1 = str1 + str(answerList[i][j] + 1)
+                                str1 = str1 + str(findLines[answerList[i][j]] + 1)
                     sheet1.write(i, 0, str1)
             if item == '7':
                 sheet1 = book.add_sheet('遗传算法')
@@ -106,15 +107,15 @@ def matome(dirPosition, tempList):
                     if len(line) > 0:
                         str1 = ""
                         if len(line) == 1:
-                            str1 = str(line[0] + 1)
+                            str1 = str(findLines[line[0]] + 1)
                             temp.append(line[0])
                         else:
                             for j in range(len(line)):
                                 if j != len(line) - 1:
-                                    str1 = str1 + str(line[j] + 1) + ","
+                                    str1 = str1 + str(findLines[line[j]] + 1) + ","
                                     temp.append(line[j])
                                 else:
-                                    str1 = str1 + str(line[j] + 1)
+                                    str1 = str1 + str(findLines[line[j]] + 1)
                                     temp.append(line[j])
                         sheet1.write(i, 0, str1)
                         i = i + 1
