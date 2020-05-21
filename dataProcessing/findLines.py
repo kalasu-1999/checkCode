@@ -12,8 +12,6 @@ def findLines(cPosition, dirPosition):
             if not ('{' in lines[i] or '}' in lines[i]):
                 countList.append(i)
     numpy.save(dirPosition + "/numpyDataDir/findLines.npy", countList)
-    for item in countList:
-        print(item)
 
 
 if __name__ == '__main__':

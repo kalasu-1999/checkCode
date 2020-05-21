@@ -5,7 +5,7 @@ import calculator.inherited.test_selection as test_selection
 import calculator.inherited.MultiOchiai as MultiOchiai
 
 # 种群个体设定数量
-np = 300
+np = 200
 
 
 # 加载MF
@@ -105,8 +105,8 @@ def resetMain(dirPosition):
     mp = lordMP(dirPosition)
     # 计算TF值
     tf = getTF(getR(dirPosition))
-    # 对种群进行100次遗传
-    for i in range(100):
+    # 对种群进行500次遗传
+    for i in range(500):
         population = inherited(population, mf, mp)
         # 将fai值不等于TF值的个体剔除
         j = 0

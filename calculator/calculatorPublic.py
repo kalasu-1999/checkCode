@@ -61,7 +61,8 @@ def getResultList(tempList):
     try:
         count = 0
         times = 0
-        while count < 20:
+        nanmin = 0
+        while count < 20 and nanmin != 2:
             nanmin = numpy.nanmin(tempList)
             temp = numpy.where(tempList == nanmin)[0]
             if len(temp) < 20:
