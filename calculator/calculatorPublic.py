@@ -39,7 +39,7 @@ def getEF(gcovList, answerList):
 
 
 def getEP(gcovList, answerList):
-    return numpy.dot(gcovList, 1-answerList)
+    return numpy.dot(gcovList, 1 - answerList)
 
 
 def getNF(gcovList, answerList):
@@ -59,14 +59,12 @@ def getPS(gcovList, answerList):
 def getResultList(tempList):
     result = []
     try:
-        count = 0
         times = 0
         nanmin = 0
-        while count < 20 and nanmin != 2:
+        while nanmin != 2:
             nanmin = numpy.nanmin(tempList)
             temp = numpy.where(tempList == nanmin)[0]
             if len(temp) < 20:
-                count = count + len(temp)
                 result.append(temp)
             times = times + 1
             for i in range(0, len(tempList)):
@@ -76,7 +74,4 @@ def getResultList(tempList):
         print("Runtime error")
     except RuntimeWarning:
         print("RuntimeWaring")
-    for i in range(0, result.__len__()):
-        for j in range(0, len(result[i])):
-            result[i][j] = result[i][j] + 1
     return result

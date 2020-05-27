@@ -3,6 +3,28 @@ import numpy
 import xlwt
 
 
+def lineFilter(dirPosition, answerList):
+    gcovMap = numpy.load(dirPosition + "/numpyDataDir/gcov1.npy")
+    answer = numpy.load(dirPosition + "/numpyDataDir/answerNumpy.npy")
+    for i in range(answerList.__len__()):
+        for j in range(answerList[i].__len__()):
+            flag = 0
+            for k in range(gcovMap.__len__()):
+                if answer[k] == 0 and gcovMap[k][answerList[i][j]] == 1:
+                    flag = 1
+                    break
+            if flag == 0:
+                answerList[i][j] = -1
+    resultList = []
+    for i in range(answerList.__len__()):
+        temp = []
+        for j in range(answerList[i].__len__()):
+            if answerList[i][j] != -1:
+                temp.append(answerList[i][j])
+        resultList.append(temp)
+    return resultList
+
+
 def matome(dirPosition, tempList):
     findLines = numpy.load(dirPosition + "/numpyDataDir/findLines.npy")
     if len(tempList) != 0:
@@ -11,6 +33,7 @@ def matome(dirPosition, tempList):
             if item == '1':
                 sheet1 = book.add_sheet('Tarantula')
                 answerList = numpy.load(dirPosition + "/numpyDataDir/tarantula.npy")
+                answerList = lineFilter(dirPosition, answerList)
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
@@ -35,6 +58,7 @@ def matome(dirPosition, tempList):
             if item == '2':
                 sheet1 = book.add_sheet('Ochiai')
                 answerList = numpy.load(dirPosition + "/numpyDataDir/ochiai.npy")
+                answerList = lineFilter(dirPosition, answerList)
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
@@ -59,6 +83,7 @@ def matome(dirPosition, tempList):
             if item == '3':
                 sheet1 = book.add_sheet('Jaccard')
                 answerList = numpy.load(dirPosition + "/numpyDataDir/jaccard.npy")
+                answerList = lineFilter(dirPosition, answerList)
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
@@ -83,6 +108,7 @@ def matome(dirPosition, tempList):
             if item == '4':
                 sheet1 = book.add_sheet('次数矩阵')
                 answerList = numpy.load(dirPosition + "/numpyDataDir/FLSF.npy")
+                answerList = lineFilter(dirPosition, answerList)
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
@@ -107,6 +133,7 @@ def matome(dirPosition, tempList):
             if item == '5':
                 sheet1 = book.add_sheet('神经网络（0,1矩阵）')
                 answerList = numpy.load(dirPosition + "/numpyDataDir/networks1.npy")
+                answerList = lineFilter(dirPosition, answerList)
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
@@ -131,6 +158,7 @@ def matome(dirPosition, tempList):
             if item == '6':
                 sheet1 = book.add_sheet('神经网络（次数矩阵）')
                 answerList = numpy.load(dirPosition + "/numpyDataDir/networks2.npy")
+                answerList = lineFilter(dirPosition, answerList)
                 for i in range(0, len(answerList)):
                     str1 = ""
                     if len(answerList[i]) == 1:
@@ -155,6 +183,7 @@ def matome(dirPosition, tempList):
             if item == '7':
                 sheet1 = book.add_sheet('遗传算法')
                 answerList = numpy.load(dirPosition + "/numpyDataDir/population.npy")
+                answerList = lineFilter(dirPosition, answerList)
                 temp = []
                 i = 0
                 for line in answerList:
