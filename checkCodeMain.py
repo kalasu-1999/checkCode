@@ -11,6 +11,8 @@ from calculator import FLSF
 from calculator import networks
 from calculator.inherited import resetPopulation
 from calculator.inherited import InializeMain
+from calculator.clustering import init
+from calculator.clustering import recalculate
 
 
 # 根据输入进行算法计算
@@ -22,19 +24,22 @@ def calculator(cDirPosition, tempList):
         tempStr = tempStr + str(item)
         if item == 1:
             tarantula.tarantulaMain(cDirPosition)
-        if item == 2:
+        elif item == 2:
             ochiai.ochiaiMain(cDirPosition)
-        if item == 3:
+        elif item == 3:
             jaccard.jaccardMain(cDirPosition)
-        if item == 4:
+        elif item == 4:
             FLSF.FLSFMain(cDirPosition)
-        if item == 5:
+        elif item == 5:
             networks.networksMain(cDirPosition, 1)
-        if item == 6:
+        elif item == 6:
             networks.networksMain(cDirPosition, 2)
-        if item == 7:
+        elif item == 7:
             InializeMain.Inialize(cDirPosition)
             resetPopulation.resetMain(cDirPosition)
+        elif item == 8:
+            init.init(cDirPosition)
+            recalculate.recalculate(cDirPosition)
     matome.matome(cDirPosition, tempStr)
 
 
@@ -58,4 +63,4 @@ if __name__ == '__main__':
               '/home/kalasu/PycharmProjects/tot_info',
               '/home/kalasu/PycharmProjects/tot_info/test',
               '/home/kalasu/PycharmProjects/tot_info/answer',
-              [1])
+              [1, 8])
