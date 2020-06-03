@@ -79,10 +79,9 @@ def init(dirPosition):
         for j in range(cuMap[i].__len__()):
             temp.append(unPassList[cuMap[i][j]])
         testNumberMap.append(temp)
-    print(testNumberMap.__len__())
+    print("clustering:" + str(testNumberMap.__len__()))
     # 将分簇后的测试用例编号矩阵（testNumberMap）进行物理存储
     numpy.save(dirPosition + "/numpyDataDir/testNumberMap.npy", testNumberMap)
-
 
 # if __name__ == '__main__':
 #     init("/home/kalasu/PycharmProjects/tot_info")

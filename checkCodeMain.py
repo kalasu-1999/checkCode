@@ -13,6 +13,8 @@ from calculator.inherited import resetPopulation
 from calculator.inherited import InializeMain
 from calculator.clustering import init
 from calculator.clustering import recalculate
+from calculator.DBSCAN import dbscan
+from calculator.DBSCAN import dbscanRecalculate
 
 
 # 根据输入进行算法计算
@@ -40,6 +42,9 @@ def calculator(cDirPosition, tempList):
         elif item == 8:
             init.init(cDirPosition)
             recalculate.recalculate(cDirPosition)
+        elif item == 9:
+            dbscan.dbscan(cDirPosition)
+            dbscanRecalculate.recalculate(cDirPosition)
     matome.matome(cDirPosition, tempStr)
 
 
@@ -63,4 +68,4 @@ if __name__ == '__main__':
               '/home/kalasu/PycharmProjects/tot_info',
               '/home/kalasu/PycharmProjects/tot_info/test',
               '/home/kalasu/PycharmProjects/tot_info/answer',
-              [1, 8])
+              [8,9])

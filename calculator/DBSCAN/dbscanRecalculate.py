@@ -6,7 +6,7 @@ from calculator import calculatorPublic
 
 # 载入分簇后的测试用例编号矩阵
 def lordTestNumberMap(dirPosition):
-    return numpy.load(dirPosition + "/numpyDataDir/testNumberMap.npy")
+    return numpy.load(dirPosition + "/numpyDataDir/dbscanTestNumber.npy")
 
 
 # 获取成功轨迹的簇（运行结果与预期一致的所有测试用例）
@@ -76,7 +76,7 @@ def recalculate(dirPosition):
     # 用于存最终结果
     result = calculatorPublic.getResultList(resultList)
     # 对最终结果进行物理存储
-    numpy.save(dirPosition + "/numpyDataDir/clustering.npy", result)
+    numpy.save(dirPosition + "/numpyDataDir/dbscan.npy", result)
 
 
 # if __name__ == '__main__':
