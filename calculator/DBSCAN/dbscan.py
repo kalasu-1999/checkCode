@@ -33,16 +33,15 @@ def getParameter_x(initMap, rank):
     return parameter_x
 
 
-# 获取参数２：每个错误测试用例实际运行行数与程序总可运行行数的百分比
+# 获取参数２：每个错误测试用例的轨迹相对于第一个测试用例轨迹的变化值
 def getParameter_y(gcovList, unPassList):
     parameter_y = []
-    countLen = gcovList[0].__len__()
     for i in unPassList:
-        ranLineCount = 0
-        for j in range(gcovList[i].__len__()):
-            if gcovList[i][j] == 1:
-                ranLineCount = ranLineCount + 1
-        parameter_y.append(ranLineCount / countLen)
+        # 获取交集
+        len1 = list(set(gcovList[i]).intersection(set(gcovList[0]))).__len__()
+        # 获取并集
+        len2 = list(set(gcovList[i]).union(set(gcovList[0]))).__len__()
+        parameter_y.append(len1 / len2)
     return parameter_y
 
 
@@ -57,7 +56,7 @@ def getParameterMap(parameter_x, parameter_y):
 
 # 对得到的坐标矩阵进行DBSCAN聚类操作得到分类列表
 def getClusteringList(parameterMap):
-    clusteringList = DBSCAN(eps=0.05, min_samples=5).fit_predict(parameterMap)
+    clusteringList = DBSCAN(eps=0.05, min_samples=4).fit_predict(parameterMap)
     return clusteringList
 
 
@@ -72,13 +71,9 @@ def getDbscanTestNumber(clusteringList, unPassList):
     while count != clusteringList.__len__():
         temp = []
         for i in range(clusteringList.__len__()):
-            if flag == -1:
-                if clusteringList[i] == flag:
-                    count = count + 1
-            else:
-                if clusteringList[i] == flag:
-                    count = count + 1
-                    temp.append(unPassList[i])
+            if clusteringList[i] == flag:
+                count = count + 1
+                temp.append(unPassList[i])
         if temp.__len__() > 0:
             dbscanTestNumber.append(temp)
         flag = flag + 1
@@ -114,7 +109,7 @@ def dbscan(dirPosition):
                 initMap.append(temp)
     # 获取参数１：每个错误测试用例所包含的怀疑度行与怀疑度行总数的百分比
     parameter_x = getParameter_x(initMap, rank)
-    # 获取参数２：每个错误测试用例实际运行行数与程序总可运行行数的百分比
+    # 获取参数２：每个错误测试用例的轨迹相对于第一个测试用例轨迹的变化值
     parameter_y = getParameter_y(gcovList, unPassList)
     # 对参数１和参数２进行整合形成一个对应的坐标矩阵
     parameterMap = getParameterMap(parameter_x, parameter_y)

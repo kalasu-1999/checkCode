@@ -68,4 +68,4 @@ if __name__ == '__main__':
               '/home/kalasu/PycharmProjects/tot_info',
               '/home/kalasu/PycharmProjects/tot_info/test',
               '/home/kalasu/PycharmProjects/tot_info/answer',
-              [8,9])
+              [1, 8, 9])
