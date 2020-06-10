@@ -70,8 +70,27 @@ def setGcov(dirPosition, numbers):
                     list2.append(int(temp1))
         gcov1.append(list1)
         gcov2.append(list2)
-    numpy.save(dirPosition + "/numpyDataDir/gcov1.npy", gcov1)
-    numpy.save(dirPosition + "/numpyDataDir/gcov2.npy", gcov2)
+    gcovList = numpy.array(gcov1)
+    temp = numpy.sum(gcovList, axis=0)
+    rangeList = []
+    for i in range(temp.__len__()):
+        if temp[i] == 0 or temp[i] == gcov1.__len__():
+            rangeList.append(i)
+    gcov1 = numpy.array(gcov1)
+    gcov2 = numpy.array(gcov2)
+    newFindLines = []
+    newGcov1 = []
+    newGcov2 = []
+    for i in range(findLines.__len__()):
+        if i not in rangeList:
+            newFindLines.append(findLines[i])
+            newGcov1.append(gcov1[:, i])
+            newGcov2.append(gcov2[:, i])
+    newGcov1 = numpy.array(newGcov1).T
+    newGcov2 = numpy.array(newGcov2).T
+    numpy.save(dirPosition + "/numpyDataDir/findLines.npy", newFindLines)
+    numpy.save(dirPosition + "/numpyDataDir/gcov1.npy", newGcov1)
+    numpy.save(dirPosition + "/numpyDataDir/gcov2.npy", newGcov2)
 
 
 def getDataMain(cDirPosition, answerDirPosition):
